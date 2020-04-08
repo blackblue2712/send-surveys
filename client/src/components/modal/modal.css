@@ -1,0 +1,116 @@
+.modal-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 999;
+    animation: openModal .4s ease;
+}
+.modal-container.open {
+    
+}
+
+.modal {
+    box-sizing: content-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    background: rgb(10, 10, 12, .92);
+    color: #aeb2b7;
+    font-family: "Open Sans", sans-serif;
+    max-width: 38rem;
+    min-width: 28rem;
+}
+
+.modal-header {
+    text-align: center;
+}
+
+.modal-header h3 {
+    margin-top: 0;
+    color: rgb(114, 137, 218);
+    font-weight: bold;
+}
+.modal-header p {
+    font-size: .9rem;
+}
+
+.modal-body {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.modal-body .body-left {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.modal-body .body-left > * {
+    display: block;
+    width: 90%;
+}
+
+.modal-body .body-left label {
+    color: #87909c;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: .7rem;
+    margin-bottom: .3rem;
+}
+
+.modal-body .body-left input {
+    color: #fff;
+    background: transparent;
+    font-weight: 500;
+    border-radius: 0;
+    border-width: 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1rem;
+    padding: .2rem .1rem;
+    margin-bottom: 1rem;
+    outline: none;
+    transition: .6s;
+}
+.modal-body .body-left input:focus {
+    border-bottom-color: #3ca374;
+}
+
+.modal-body .body-right {
+    flex-grow: 1
+}
+.modal-body .body-right button {
+    margin-bottom: 1rem;
+}
+.modal-body .body-right button:last-child {
+    margin-bottom: 0;
+}
+
+.modal-footer {
+    margin-top: .8rem;
+}
+
+.modal-footer .modal-footer__action {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-footer .modal-footer__description {
+    margin-bottom: .7rem;
+}
+
+@keyframes openModal {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: .4rem 1rem;
+    cursor: pointer;
+    color: #000;
+    border-radius: .9rem;
+    transition: .1s linear;
+}
+
+.btn.btn-primary {
+    background-color: #0099F9;
+    color: #fff;
+}
+.btn.btn-primary:hover {
+    background-color: #ff1b68;
+    box-shadow: 1px 2px 2px #944c4c;
+}
+
+.btn.btn-facebook {
+    background-color: #1f7dd8;
+    color: #fff;
+    width: 100%;
+    border: 1px solid transparent;
+
+}
+
+.btn.btn-google {
+    background-color: #EA4335;
+    color: #fff;
+    width: 100%;
+    border: 1px solid transparent;
+}
+
+.btn.btn-google:hover {
+    background-color: #ee392a;
+}
+.btn.btn-facebook:hover {
+    background-color: #0080fd;
+}
+.btn.btn-outline {
+    background-color: transparent;
+}
+.btn.btn-danger {
+    color: #f04747;
+    border: 1px solid rgba(240, 71, 71, .3);
+    border-radius: 1%;
+}
+.btn.btn-danger:hover {
+    border: 1px solid rgba(240, 71, 71, 1);
+}
+.btn.btn-green {
+    color: #3ca374;
+    border: 1px solid rgba(117, 215, 170, .3);
+    border-radius: 1%;
+}
+.btn.btn-green:hover {
+    border: 1px solid rgba(117, 215, 170, 1);
+}
+.btn-dropdown {
+    padding: .2rem .8rem;
+}
+.help-text {
+    font-size: .8rem;
+}
