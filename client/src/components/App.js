@@ -5,7 +5,9 @@ import Header from './Header';
 import Footer from './Footer';
 
 import Main from './Main';
-import Services from './Services';
+import Surveys from './surveys/Surveys';
+import CreateSurvey from './surveys/CreateSurvey';
+
 
 import "./app.css";
 
@@ -17,7 +19,8 @@ class App extends React.Component {
                 <Header />
                     <Switch>
                         <Route exact path="/" component={Main} />
-                        <Route exact path="/services" component={Services} />
+                        <Route exact path="/services" component={Surveys} />
+                        <Route exact path="/services/create/:uid" component={CreateSurvey} />
                     </Switch>
                 <Footer />
             </Router>

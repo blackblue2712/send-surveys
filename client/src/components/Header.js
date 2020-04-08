@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Logo from '../images/logo.png';
 import { connect } from 'react-redux';
 import { fetchUser, logout } from '../actions';
@@ -18,6 +18,24 @@ class Header extends React.Component {
 
     componentDidMount() {
         this.props.fetchUser();
+        let whereami = this.props.location.pathname.split("/")[1];
+
+        if(whereami) {
+            Array.from(document.querySelectorAll(".main-nav__item")).forEach( el => el.classList.remove("youarehere"));
+    
+            document.getElementById(whereami).classList.add("youarehere");
+        }
+
+    }
+
+    componentDidUpdate() {
+        // console.log("update")
+        let whereami = this.props.location.pathname.split("/")[1];
+
+        Array.from(document.querySelectorAll(".main-nav__item")).forEach( el => el.classList.remove("youarehere"));
+        if(whereami) {
+            document.getElementById(whereami).classList.add("youarehere");
+        }
     }
 
     logout = () => {
@@ -87,7 +105,7 @@ class Header extends React.Component {
     }
 
     render() {
-        console.log(this.props.auth)
+        // console.log(this.props.auth)
         const { openModal } = this.state;
         return (
             <header>
@@ -98,7 +116,7 @@ class Header extends React.Component {
                             <li className="main-nav__item">
                                 <Link to="/"><img src={Logo} alt="logo" className="main-nav__item--logo" /></Link>
                             </li>
-                            <li className="main-nav__item">
+                            <li id="services" className="main-nav__item">
                                 <Link to="/services">Services</Link>
                             </li>
                             <li className="main-nav__item">
@@ -125,4 +143,4 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps,
     { fetchUser, logout }
-)(Header);
+)(withRouter(Header));

@@ -84,6 +84,26 @@ li {
 .btn-dropdown {
     padding: .2rem .8rem;
 }
+.btn-bold {
+    font-weight: bold;
+    animation: btnLight 4s linear infinite;
+}
+.btn-bold:hover {
+    background-color: #fffaed;
+}
 .help-text {
     font-size: .8rem;
+}
+
+
+@keyframes btnLight {
+    0% {
+        border: 1px solid rgba(117, 215, 170, .3);
+    }
+    50% {
+        border: 1px solid rgba(117, 215, 170, 1);
+    }
+    100% {
+        border: 1px solid rgba(117, 215, 170, .3);
+    }
 }

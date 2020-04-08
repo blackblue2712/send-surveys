@@ -6,7 +6,7 @@ export const fetchUser = () => async dispatch => {
 
     dispatch({
         type: types.FETCH_USER,
-        payload: response.data
+        payload: response.data || null
     });
 }
 

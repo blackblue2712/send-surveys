@@ -1,4 +1,5 @@
 {
     "FETCH_USER": "FETCH_USER",
-    "LOG_OUT": "LOG_OUT"
+    "LOG_OUT": "LOG_OUT",
+    "SHOW_MODAL_LOGIN": "SHOW_MODAL_LOGIN"
 }
