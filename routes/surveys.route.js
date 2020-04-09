@@ -21,9 +21,11 @@ module.exports = app => {
         
         const mail = new Mailer(survey, surveyTemplate.defaultTemplate(survey));
         const response = await mail.send();
-        if(response.statusCode === 202) {
+        if(response && response.statusCode === 202) {
             await survey.save();
-            return res.status(200).json(survey);
+            return res.status(200).json({ survey, status: "green", message: "Your surveys was sent" });
+        } else {
+            return res.json({ status: "danger", message: "Oops! Something went wrong" });
         }
     });
 
@@ -59,6 +61,8 @@ module.exports = app => {
                 console.log(response);
             })
             .value()
+
+        res.send({});
 
     })
 }

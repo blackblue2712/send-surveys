@@ -1,0 +1,55 @@
+#notify {
+    position: fixed;
+    min-width: 8rem;
+    min-height: 2.5rem;
+    background-color: rgba(0, 0, 0, .75);
+    bottom: 2rem;
+    left: 3rem;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: .95rem;
+    color: #d6d6d6;
+    padding: .5rem 1rem;
+    animation: toggleNotify 3s linear;
+    visibility: hidden;
+}
+
+#notify .notify-image {
+    background-size: 1.3rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right: .4rem;
+    border-radius: 50%;
+}
+#notify .notify-image.green {
+    background: url(../../images/tick.png) center center no-repeat;
+}
+#notify .notify-image.danger {
+    background: url(../../images/close.png) center center no-repeat;
+}
+
+@keyframes toggleNotify {
+    0% {
+        visibility: visible;
+        opacity: 0;
+        bottom: .5rem;
+    }
+
+    10% {
+        opacity: 1;
+        bottom: 2rem;
+    }
+
+    90% {
+        opacity: 1;
+        bottom: 2rem;
+    }
+
+    100% {
+        visibility: hidden;
+        opacity: 0;
+        bottom: .5rem;
+    }
+}

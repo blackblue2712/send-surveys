@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Image from '../../images/sending-surveys-header-2x.png';
 import { connect } from 'react-redux';
 import ModalLogin from '../modal/ModalLogin';
+import LoadingDuration from '../loading/LoadingDuration';
 
 class Surveys extends React.Component {
     state = {
@@ -23,7 +24,8 @@ class Surveys extends React.Component {
     render() {
         let { openModal } = this.state;
         return (
-            <main>
+            <main className="">
+                <LoadingDuration />
                 {openModal && <ModalLogin closeModal={() => this.setState({ openModal: false })}/>}
                 <section id="features-surveys">
                     <div className="surveys__header">

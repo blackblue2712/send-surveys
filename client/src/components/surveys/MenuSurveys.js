@@ -2,20 +2,28 @@ import React from 'react';
 
 class MenuSurveys extends React.Component {
 
+    saveSurvey = () => {
+        this.props.saveSurvey();
+    }
+
     render() {
         return (
             <div id="menu-surveys">
                 <div className="menu-surveys__items">
-                    <div className="menu-surveys__item">
-                        <i className="ti-save"></i> Save survey
+                    <div
+                        className="menu-surveys__item"
+                        onClick={this.saveSurvey}
+                    >
+                        <i className="ti-save"></i>
+                        <span> Save survey</span>
                     </div>
                     <div className="menu-surveys__item">
-                        <div>
-                            <i className="ti-reload"></i> Load surveys
-                        </div>
+                        <i className="ti-reload"></i>
+                        <span> Load survey</span>
                     </div>
                     <div className="menu-surveys__item">
-                        <i className="ti-layout-grid2"></i> See example
+                        <i className="ti-layout-grid2"></i> 
+                        <span> My surveys</span>
                     </div>
                 </div>
 

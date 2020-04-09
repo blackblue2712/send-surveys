@@ -3,8 +3,11 @@ import RecipinentsInput from './RecipientsInput';
 import InputFormControl from '../input/InputFormControl';
 import TextareaFormControl from '../input/TextareaFormControl';
 import MenuSurveys from './MenuSurveys';
-import { sendSurvey } from '../../actions/surveys';
+import { sendSurvey, saveSurvey } from '../../actions/surveys';
 import { connect } from 'react-redux';
+import Notify from '../notify/Notify';
+import ModalSaveSurvey from '../modal/ModalSaveSurvey';
+// import Loading from '../loading/Loading';
 
 class CreateSurvey extends React.Component {
     constructor() {
@@ -15,13 +18,15 @@ class CreateSurvey extends React.Component {
             title: "",
             subject: "",
             body: "",
-            errors: []
+            errors: [],
+            loading: "",
+            notify: false,
+            openModal: false
         }
     }
 
     getRecipients = callback => {
         this.recipients = callback();
-
     }
 
     validateData = async () => {
@@ -62,22 +67,59 @@ class CreateSurvey extends React.Component {
     }
 
     sendSurvey = async () => {
+        
         await this.validateData();
         if (!this.state.errors.length) {
-            
-            const response = await this.props.sendSurvey({ ...this.state, recipients: this.recipients, errors: undefined });
+            this.setState({ loading: "open" });
+            const response = await this.props.sendSurvey({
+                ...this.state, recipients: this.recipients, errors: undefined, loading: undefined,
+                notify: undefined
+            });
+
+            this.setState({
+                loading: "", title: "", subject: "", body: "", notify: { content: response.payload.message, stats: response.payload.status }
+            });
+
             console.log(response)
+
+            setTimeout(() => {
+                this.setState({ notify: false })
+            }, 2000)
         }
+    }
+
+    openSaveSurvey = () => {
+        this.setState({ openModal: true });
+    }
+
+    saveSurvey = () => {
+        
     }
 
 
 
     render() {
-        const { title, subject, body, errors } = this.state;
+        const { title, subject, body, errors, loading, notify, openModal } = this.state;
         return (
             <main>
                 <section id="features-surveys">
-                    <MenuSurveys />
+                    {
+                        notify &&
+                        <Notify
+                            stats={notify.stats}
+                            content={notify.content}
+                        />
+                    }
+                    {
+                        openModal &&
+                        <ModalSaveSurvey
+                            closeModal={() => this.setState({ openModal: false })}
+                            saveSurvey={this.saveSurvey}
+                        />
+                    }
+                    <div className={`survey-send__loading ${loading}`}></div>
+                    
+                    <MenuSurveys saveSurvey={this.openSaveSurvey} />
                     <div className="surveys__header">
                         <h1>Send Surveys</h1>
                     </div>
@@ -99,11 +141,10 @@ class CreateSurvey extends React.Component {
                         >
                             <i className="ti-location-arrow"></i> Send Now 
                         </button>
-
+                        <div className="surveys__background">
+                        </div>
                     </div>
-                    <div className="surveys__image">
-                    </div>
-
+                    
                 </section>
             </main>
         )
@@ -112,5 +153,5 @@ class CreateSurvey extends React.Component {
 
 export default connect(
     null,
-    { sendSurvey }
+    { sendSurvey, saveSurvey }
 )(CreateSurvey);

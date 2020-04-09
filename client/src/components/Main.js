@@ -1,11 +1,13 @@
 import React from 'react';
 import SurveyImg from '../images/header.png';
+import LoadingDuration from './loading/LoadingDuration';
 
 class Main extends React.Component {
 
     render() {
         return (
             <main>
+                <LoadingDuration />
                 <section id="introduce">
                     <div className="introduce-left">
                         <img src={SurveyImg} alt="survey" />

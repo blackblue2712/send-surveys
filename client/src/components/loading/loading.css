@@ -1,0 +1,131 @@
+#main-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+}
+
+.loading__backdrop {
+    background-color: rgb(34, 34, 34, 1);
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+/* .logo {
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/42746/ds_logo.png);
+    height: 50vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-position: center 0.5rem;
+    background-size: contain;
+} */
+.star {
+    height: 5rem;
+    width: 5rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateZ(0) translateX(-50%) translateY(-50%);
+    z-index: 1001;
+}
+.point {
+    position: absolute;
+    height: 0.1rem;
+    width: 0.1rem;
+    top: 0;
+    left: 50%;
+    top: 50%;
+    transform-origin: bottom center;
+    animation: pulseFade 2.5s infinite;
+}
+.point:before, .point:after {
+    display: block;
+    content: '';
+    width: 0;
+    height: 0;
+    bottom: 0.1rem;
+    border-style: solid;
+    position: absolute;
+}
+.point:before {
+    border-width: 3rem 0 1.4rem 1rem;
+    border-color: transparent transparent transparent white;
+    left: 0.035rem;
+}
+.point:after {
+    border-width: 3rem 1rem 1.4rem 0;
+    border-color: transparent white transparent transparent;
+    left: calc(-1rem + 0.035rem);
+}
+.point:nth-child(1) {
+    transform: translateZ(0);
+    animation-delay: -2.5s;
+}
+.point:nth-child(2) {
+    transform: translateZ(0) rotate(72deg);
+    animation-delay: -2s;
+}
+.point:nth-child(3) {
+    transform: translateZ(0) rotate(144deg);
+    animation-delay: -1.5s;
+}
+.point:nth-child(4) {
+    transform: translateZ(0) rotate(216deg);
+    animation-delay: -1s;
+}
+.point:nth-child(5) {
+    transform: translateZ(0) rotate(288deg);
+    animation-delay: -0.5s;
+}
+@keyframes pulseFade {
+    0% {
+        opacity: 0;
+   }
+    2% {
+        opacity: 0.6;
+   }
+    4% {
+        opacity: 0.4;
+   }
+    6% {
+        opacity: 0.8;
+   }
+    8% {
+        opacity: 0.4;
+   }
+    10% {
+        opacity: 1;
+   }
+    80% {
+        opacity: 0;
+   }
+    100% {
+        opacity: 0;
+   }
+}
+
+
+/* LOADING DURATION */
+.loading-prepare {
+    background-color: #fff;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    left: 0;
+    visibility: hidden;
+    animation: loading 1s ease;
+}
+
+.loading-prepare__background {
+    background: url(../../images/loading.gif) center center no-repeat;
+    background-position-y: -4.5rem;
+    width: 100%;
+    height: 100%;
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+}

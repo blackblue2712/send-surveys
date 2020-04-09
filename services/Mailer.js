@@ -52,7 +52,8 @@ class Mailer extends helper.Mail {
             console.log(response)
             return response;
         } catch(err) {
-            console.log(err)
+            console.log(err);
+            return undefined;
         }
     }
 
