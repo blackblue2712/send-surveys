@@ -8,7 +8,7 @@ const TextareaFormControl = props => {
             {errors.indexOf(name) !== -1 && <ErrorValidateForm error={name} />}
             <label htmlFor={name}>{labelName}</label>
             <textarea
-                name={name} id={name} required
+                name={name} id={name}
                 value={value}
                 onChange={e => setValue(name, e.target.value)}
             ></textarea>

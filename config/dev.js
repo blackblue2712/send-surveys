@@ -7,6 +7,9 @@ module.exports = {
     cookieSecret: "randomfuckingstring",
     stripePublicKey: "pk_test_osIZPWCrMZ6RMNWnAifUE7rH00JYSP6Cqp",
     stripeSecretKey: "sk_test_pXw6r6l11kTklC0CKwTyet9800h57khFLJ",
-    sendGridKey: "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",
+    sendGridKey: "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",
     redirectDomain: "http://localhost:3000"
 }
+
+
+// "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"

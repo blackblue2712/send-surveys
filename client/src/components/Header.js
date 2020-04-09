@@ -23,7 +23,11 @@ class Header extends React.Component {
         if(whereami) {
             Array.from(document.querySelectorAll(".main-nav__item")).forEach( el => el.classList.remove("youarehere"));
     
-            document.getElementById(whereami).classList.add("youarehere");
+            try {
+                document.getElementById(whereami).classList.add("youarehere");
+            } catch(err) {
+                console.log("route not defined")
+            }
         }
 
     }
@@ -34,7 +38,11 @@ class Header extends React.Component {
 
         Array.from(document.querySelectorAll(".main-nav__item")).forEach( el => el.classList.remove("youarehere"));
         if(whereami) {
-            document.getElementById(whereami).classList.add("youarehere");
+            try {
+                document.getElementById(whereami).classList.add("youarehere");
+            } catch(err) {
+                console.log("route not defined")
+            }
         }
     }
 

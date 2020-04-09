@@ -8,7 +8,7 @@ const InputFormControl = props => {
             {errors.indexOf(name) !== -1 && <ErrorValidateForm error={name} />}
             <label htmlFor={name}>{labelName}</label>
             <input
-                type="text" name={name} id={name} required
+                type="text" name={name} id={name}
                 value={value}
                 onChange={e => setValue(name, e.target.value)}
             />

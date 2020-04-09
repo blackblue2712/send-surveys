@@ -118,7 +118,7 @@
 
 /* MENU SURVEYS */
 #menu-surveys {
-
+    display: none;
 }
 
 #menu-surveys .menu-surveys__items {
@@ -152,12 +152,13 @@
     height: 100%;
 }
 .surveys-history .surveys-history__items {
-    display: flex;
+    display: none;
     align-items: center;
     height: 100%;
     background: rgb(10, 10, 12, .92);
     color: #fff;
     justify-content: center;
+
 }
 .surveys-history .surveys-history__item {
     padding: .5rem;

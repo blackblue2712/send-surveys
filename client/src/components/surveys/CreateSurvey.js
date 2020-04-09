@@ -3,6 +3,8 @@ import RecipinentsInput from './RecipientsInput';
 import InputFormControl from '../input/InputFormControl';
 import TextareaFormControl from '../input/TextareaFormControl';
 import MenuSurveys from './MenuSurveys';
+import { sendSurvey } from '../../actions/surveys';
+import { connect } from 'react-redux';
 
 class CreateSurvey extends React.Component {
     constructor() {
@@ -62,7 +64,9 @@ class CreateSurvey extends React.Component {
     sendSurvey = async () => {
         await this.validateData();
         if (!this.state.errors.length) {
-            console.log(this.state, this.recipients)
+            
+            const response = await this.props.sendSurvey({ ...this.state, recipients: this.recipients, errors: undefined });
+            console.log(response)
         }
     }
 
@@ -70,7 +74,6 @@ class CreateSurvey extends React.Component {
 
     render() {
         const { title, subject, body, errors } = this.state;
-        console.log(this.state.errors)
         return (
             <main>
                 <section id="features-surveys">
@@ -89,13 +92,13 @@ class CreateSurvey extends React.Component {
                                 <RecipinentsInput getRecipients={this.getRecipients} />
                             </div>
                             <div className="help-text"><i>Please fill out the form before submit</i></div>
-                            <button
-                                className="btn btn-outline btn-green btn-bold"
-                                onClick={this.sendSurvey}
-                            >
-                                Send Now
-                            </button>
                         </form>
+                        <button
+                            className="btn btn-outline btn-green btn-bold"
+                            onClick={this.sendSurvey}
+                        >
+                            <i className="ti-location-arrow"></i> Send Now 
+                        </button>
 
                     </div>
                     <div className="surveys__image">
@@ -107,4 +110,7 @@ class CreateSurvey extends React.Component {
     }
 }
 
-export default CreateSurvey;
+export default connect(
+    null,
+    { sendSurvey }
+)(CreateSurvey);
