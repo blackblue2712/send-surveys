@@ -8,9 +8,6 @@ class MenuSurveys extends React.Component {
         loadingSurveys: "",
         openModal: false
     }
-    
-    async componentDidMount() {
-    }
 
     saveSurvey = () => {
         this.props.saveSurvey();
@@ -25,7 +22,7 @@ class MenuSurveys extends React.Component {
 
         setTimeout(() => {
             this.setState({ loadingSurveys: "", openModal: true });
-        }, 1000)
+        }, 300)
         
     }
 
@@ -37,7 +34,6 @@ class MenuSurveys extends React.Component {
                     openModal &&
                     <ModalChooseSurveys
                         closeModal={ () => this.setState({ openModal: false }) }
-                        surveys={this.props.surveysDraft}
                         loadSurveyDraft={this.props.loadSurveyDraft}
                     />
                 }

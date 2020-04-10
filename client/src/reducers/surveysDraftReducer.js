@@ -8,6 +8,8 @@ export default (state = INIT_STATE, action) => {
             return [...action.payload]
         case types.SAVE_SURVEY:
             return [action.payload.survey, ...state]
+        case types.REMOVE_DRAFT:
+            return state.filter(draft => draft._id !== action.payload);
         default:
             return state;
     }

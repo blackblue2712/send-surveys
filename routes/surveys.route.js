@@ -9,10 +9,10 @@ const slack = require("../services/slack");
 
 
 module.exports = app => {
-    app.get("/services/surveys", (req, res) => {
-        console.log("send")
-        slack.sendNotify({ email: "danghuunghia2712@gmail.com", surveyId: "5e9043d8002e8e3b3be46a30", choice: "yes" });
-        res.end();
+    app.get("/services/surveys", async (req, res) => {
+        const surveys = await Survey.find({ owner: req.user._id });
+
+        res.json(surveys);
     });
 
     app.post("/services/surveys", async (req, res) => {
@@ -86,4 +86,10 @@ module.exports = app => {
         const surveys = await SurveyDraft.find({ owner: req.user._id }).sort({ _id: -1 });
         return res.json(surveys);
     })
+
+    app.delete("/services/surveys/draft/:sid", async (req, res) => {
+        console.log(req.params)
+        await SurveyDraft.deleteOne({ _id: req.params.sid });
+        res.send({});
+    });
 }

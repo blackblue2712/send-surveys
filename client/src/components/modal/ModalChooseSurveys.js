@@ -1,15 +1,13 @@
 import React from 'react';
 import Modal from './Modal';
 import moment from 'moment';
+import { connect } from 'react-redux';
+import { removeDraft } from '../../actions/surveys';
 
 class ModalChooseSurveys extends React.Component {
-
-    handleLoginFacebook = () => {
-        window.location = (`${process.env.REACT_APP_API_URL}/auth/facebook`);
-    }
-
-    handleLoginGoogle = () => {
-        window.location = (`${process.env.REACT_APP_API_URL}/auth/google`);
+    constructor() {
+        super();
+        this.childClicked = false;
     }
 
     renderTitleHeader = () => {
@@ -28,7 +26,16 @@ class ModalChooseSurveys extends React.Component {
     }
 
     loadSurveyDraft = sid => {
-        this.props.loadSurveyDraft(sid);
+        if(!this.childClicked) {
+            this.props.closeModal();
+            this.props.loadSurveyDraft(sid);
+        }
+    }
+
+    handleRemoveDraft = async sid => {
+        this.childClicked = true;
+        await this.props.removeDraft(sid);
+        this.childClicked = false;
     }
 
     renderBody = () => {
@@ -43,11 +50,12 @@ class ModalChooseSurveys extends React.Component {
                                     <li
                                         key={survey._id}
                                         className="modal-list-surveys__item"
-                                        onClick={() => {
+                                        onClick={ e => {
                                             this.loadSurveyDraft(survey._id);
-                                            this.props.closeModal()
                                         }}
+                                        draggable={true}
                                     >
+                                        <i onClick={() => this.handleRemoveDraft(survey._id)} className="ti-close"></i>
                                         <h4>{survey.name}</h4>
                                         <small>{moment(survey.created).fromNow()}</small>
                                     </li>
@@ -55,9 +63,12 @@ class ModalChooseSurveys extends React.Component {
                             })
                         }
                     </ul>
-                    <div style={{textAlign: "center", fontWeight: "bold"}}>
-                        You don't have any survey backup
-                    </div>
+                    {
+                        !surveys.length &&
+                        <div style={{textAlign: "center", fontWeight: "bold"}}>
+                            You don't have any survey backup
+                        </div>
+                    }
                 </div>
             </>
         )
@@ -85,4 +96,11 @@ class ModalChooseSurveys extends React.Component {
     }
 }
 
-export default ModalChooseSurveys;
+const mapStateToProps = state => {
+    return { surveys: state.surveysDraft }
+}
+
+export default connect(
+    mapStateToProps,
+    { removeDraft }
+)(ModalChooseSurveys);

@@ -216,12 +216,25 @@
     transition: .4s;
     cursor: pointer;
     text-align: center;
+    position: relative;
+    user-select: none;
 }
 .modal-list-surveys__item:hover {
     background-color: transparent;
     border-color: #0099F9;
     box-shadow: 0 1px 2px #0099F9;
 }
+.modal-list-surveys__item i {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border-radius: 50%;
+    font-size: .75rem;
+}
+.modal-list-surveys__item i:hover {
+    color: red;
+}
+
 .modal-list-surveys__item h4 {
     margin-bottom: 0;
 }
@@ -248,6 +261,35 @@
 .menu-surveys__item--loading i {
     animation: rotateLoading .5s linear infinite;
 }
+
+/* LIST SURVEYS */
+.list-surveys__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 2rem;
+    text-align: left;
+    margin-bottom: 3rem;
+}
+.list-surveys__item {
+    padding: .5rem 1.2rem;
+    position: relative;
+    cursor: pointer;
+    /* box-shadow: 1px 1px 4px #82cfff; */
+    border: 1px solid #82cfff;
+    transition: .2s;
+}
+.list-surveys__item:hover {
+    box-shadow: 0px 2px 5px #0099f9;
+    /* border: none; */
+}
+.list-surveys__item h4 {
+    margin-bottom: 0;
+}
+.list-surveys__item small {
+    margin-bottom: 1.33rem;
+    display: block;
+}
+
 
 @keyframes changeText {
     0% {

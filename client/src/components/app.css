@@ -1,3 +1,33 @@
+:root {
+    --main-bg-color: #181818;
+    --header-bg-color: #202020;
+    --main-text-color: #ffffff;
+}
+
+*::-webkit-scrollbar {
+    width: .6em;
+    
+  }
+  *::-webkit-scrollbar,
+  *::-webkit-scrollbar-thumb {
+    overflow:visible;
+    border-radius: 4px;
+    
+  }
+  *::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.6); 
+  }
+  
+
+html
+{
+ scroll-behavior:smooth
+}
+html{
+  scroll-behavior:smooth
+}
+
+
 html {
     height: 100%;
 }
