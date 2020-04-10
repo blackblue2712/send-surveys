@@ -11,7 +11,7 @@ const slack = require("../services/slack");
 module.exports = app => {
     app.get("/services/surveys", (req, res) => {
         console.log("send")
-        slack.sendNotify({ email: "danghuunghia2712@gmail.com", surveyId: 1, choice: "yes" });
+        slack.sendNotify({ email: "danghuunghia2712@gmail.com", surveyId: "5e9043d8002e8e3b3be46a30", choice: "yes" });
         res.end();
     });
 
@@ -23,7 +23,9 @@ module.exports = app => {
         survey.recipients = recipients.map(recipient => ({email: recipient}) );
         
         const mail = new Mailer(survey, surveyTemplate.defaultTemplate(survey));
+
         const response = await mail.send();
+        console.log(response)
         if(response && response.statusCode === 202) {
             await survey.save();
             return res.status(200).json({ survey, status: "green", message: "Your surveys was sent" });
@@ -61,10 +63,10 @@ module.exports = app => {
                         lastUpdate: Date.now()
                     }
                 )
+                console.log(response)
                 if(response.nModified !== 0) {
                     slack.sendNotify({ email, surveyId, choice });
                 }
-                console.log(response);
             })
             .value()
 

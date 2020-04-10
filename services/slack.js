@@ -23,7 +23,7 @@ module.exports.sendNotify = ({ email, surveyId, choice }) => {
                 "accessory": {
                     "type": "image",
                     "image_url": "https://res.cloudinary.com/daerg3axr/image/upload/v1586507720/wd0b1y8wg73w1fnyison.gif",
-                    "alt_text": "calendar thumbnail"
+                    "alt_text": "thumbnail"
                 }
             },
             {
@@ -41,6 +41,7 @@ module.exports.sendNotify = ({ email, surveyId, choice }) => {
         },
         json: notfify
     }
-
-    request(postOptions);
+    request(postOptions, function(err) {
+        
+    });
 }

@@ -9,9 +9,8 @@ module.exports = {
     stripeSecretKey: "sk_test_pXw6r6l11kTklC0CKwTyet9800h57khFLJ",
     sendGridKey: "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",
     redirectDomain: "http://localhost:3000",
-    SLACK_INCOMMING_REQUEST_WEBHOOK: "https://hooks.slack.com/services/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"
-
+    SLACK_INCOMMING_REQUEST_WEBHOOK: "https://hooks.slack.com/services/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"
 }
 
-
 // "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"
+// SLACK_INCOMMING_REQUEST_WEBHOOK: "https://hooks.slack.com/services/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"
