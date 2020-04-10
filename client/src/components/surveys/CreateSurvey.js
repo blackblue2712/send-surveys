@@ -70,14 +70,12 @@ class CreateSurvey extends React.Component {
         
         await this.validateData();
         if (!this.state.errors.length) {
+            const { title, body, subject } = this.state;
             this.setState({ loading: "open" });
-            const response = await this.props.sendSurvey({
-                ...this.state, recipients: this.recipients, errors: undefined, loading: undefined,
-                notify: undefined
-            });
+            const response = await this.props.sendSurvey({ title, body, subject, recipients: this.recipients });
 
             this.setState({
-                loading: "", title: "", subject: "", body: "", notify: { content: response.payload.message, stats: response.payload.status }
+                loading: "", title: "", notify: { content: response.payload.message, stats: response.payload.status }
             });
 
             console.log(response)
@@ -89,17 +87,43 @@ class CreateSurvey extends React.Component {
     }
 
     openSaveSurvey = () => {
-        this.setState({ openModal: true });
+        if (this.recipients.length) {
+            this.setState({ openModal: true });
+        } else {
+            this.setState({ errors: ["recipients"] });
+        }
     }
 
-    saveSurvey = () => {
-        
+    saveSurvey = async name => {
+        this.setState({ loading: "open" });
+        const { title, body, subject } = this.state
+        const response = await this.props.saveSurvey({ title, body, subject, recipients: this.recipients, name: name || undefined });
+
+        this.setState({
+            openModal: false, loading: "",
+            notify: { content: response.payload.message, stats: response.payload.status }
+        });
     }
+
+    loadSurveyDraft = sid => {
+        const loadedSurvey = this.props.surveysDraft.find(sv => sv._id === sid);
+        
+        if(loadedSurvey) {
+            this.recipients = loadedSurvey.recipients
+            this.setState({
+                title: loadedSurvey.title,
+                subject: loadedSurvey.subject,
+                body: loadedSurvey.body
+            });
+        }
+    }
+    
 
 
 
     render() {
         const { title, subject, body, errors, loading, notify, openModal } = this.state;
+        const recipients = this.recipients;
         return (
             <main>
                 <section id="features-surveys">
@@ -119,7 +143,10 @@ class CreateSurvey extends React.Component {
                     }
                     <div className={`survey-send__loading ${loading}`}></div>
                     
-                    <MenuSurveys saveSurvey={this.openSaveSurvey} />
+                    <MenuSurveys
+                        saveSurvey={this.openSaveSurvey}
+                        loadSurveyDraft={this.loadSurveyDraft}
+                    />
                     <div className="surveys__header">
                         <h1>Send Surveys</h1>
                     </div>
@@ -131,7 +158,10 @@ class CreateSurvey extends React.Component {
 
                             <div className="form-control">
                                 {errors.indexOf("recipients") !== -1 && this.renderError("recipients")}
-                                <RecipinentsInput getRecipients={this.getRecipients} />
+                                <RecipinentsInput
+                                    initRecipients={recipients}
+                                    getRecipients={this.getRecipients}
+                                />
                             </div>
                             <div className="help-text"><i>Please fill out the form before submit</i></div>
                         </form>
@@ -151,7 +181,11 @@ class CreateSurvey extends React.Component {
     }
 }
 
+const mapStateToProps = state => {
+    return { surveysDraft: state.surveysDraft }
+}
+
 export default connect(
-    null,
+    mapStateToProps,
     { sendSurvey, saveSurvey }
 )(CreateSurvey);

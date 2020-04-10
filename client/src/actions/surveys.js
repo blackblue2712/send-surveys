@@ -21,7 +21,18 @@ export const saveSurvey = data => async dispatch => {
     const response = await axios.post("/services/surveys/save", data);
     console.log(response)
 
-    return {
+    return dispatch({
+        type: types.SAVE_SURVEY,
         payload: response.data
-    }
+    })
+}
+
+export const getSurveysDraft = () => async dispatch => {
+    const response = await axios.get("/services/surveys/draft");
+    console.log(response)
+
+    return dispatch({
+        type: types.GET_DRAFT,
+        payload: response.data
+    })
 }

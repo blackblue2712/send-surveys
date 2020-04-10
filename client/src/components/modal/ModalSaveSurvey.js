@@ -2,6 +2,10 @@ import React from 'react';
 import Modal from './Modal';
 
 class ModalSaveSurvey extends React.Component {
+    constructor() {
+        super();
+        this.nameInput = React.createRef();
+    }
 
     handleLoginFacebook = () => {
         window.location = (`${process.env.REACT_APP_API_URL}/auth/facebook`);
@@ -30,8 +34,8 @@ class ModalSaveSurvey extends React.Component {
         return (
             <>
                 <div className="body-left">
-                    <label htmlFor="username">Survey Name</label>
-                    <input autoComplete={0} name="username" id="username" type="text"/>
+                    <label htmlFor="surveyName">Survey Name</label>
+                    <input ref={this.nameInput} autoComplete={0} name="surveyName" id="surveyName" type="text"/>
                 </div>
 
                 <div className="body-right">
@@ -51,12 +55,16 @@ class ModalSaveSurvey extends React.Component {
         )
     }
 
+    saveSurvey = () => {
+        this.props.saveSurvey(this.nameInput.current.value)
+    }
+
     renderActionFooter = () => {
         return (
             <>
                 <button
                     className="btn btn-outline btn-green"
-                    onClick={this.props.saveSurvey}
+                    onClick={this.saveSurvey}
                 >Save</button>
                 <button onClick={this.props.closeModal} className="btn btn-outline btn-danger">Cancel</button>
             </>

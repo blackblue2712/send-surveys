@@ -4,10 +4,10 @@ const INIT_STATE = [];
 
 export default (state = INIT_STATE, action) => {
     switch(action.type) {
-        case types.SEND_SURVEYS:
-            return [...state, action.payload.survey]
-        case types.FETCH_SURVEYS:
-            return action.payload;
+        case types.GET_DRAFT:
+            return [...action.payload]
+        case types.SAVE_SURVEY:
+            return [action.payload.survey, ...state]
         default:
             return state;
     }

@@ -46,6 +46,10 @@ class RecipientsInput extends React.Component {
         this.setState({ tags });
     }
 
+    UNSAFE_componentWillReceiveProps(props) {
+        this.setState({ tags: props.initRecipients });
+    }
+
     render() {
         const { tags } = this.state;
         return (

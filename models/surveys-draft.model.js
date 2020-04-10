@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
 
 const surveysDraftSchema = new Schema({
+    name: {
+        type: String,
+        default: "[Survey Draft]"
+    },
     owner: {
         type: ObjectId,
         ref: "user"
@@ -10,9 +14,7 @@ const surveysDraftSchema = new Schema({
     title: String,
     subject: String,
     body: String,
-    recipients: {
-        Type: Array
-    },
+    recipients: [],
     created: {
         type: Date,
         default: Date.now()

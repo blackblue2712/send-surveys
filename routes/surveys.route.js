@@ -1,6 +1,7 @@
 const Mailer = require("../services/Mailer");
 const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 const Survey = require("../models/surveys.model");
+const SurveyDraft = require("../models/surveys-draft.model");
 const _ = require("lodash");
 const { URL } = require("url");
 const { Path } = require("path-parser");
@@ -64,5 +65,18 @@ module.exports = app => {
 
         res.send({});
 
+    })
+
+    app.post("/services/surveys/save", async (req, res) => {
+        const { name, title, subject, body, recipients } = req.body;
+        const survey = await new SurveyDraft({ name, title, subject, body, recipients, owner: req.user._id }).save();
+
+        return res.json({ status: "green", message: "Survey saved", survey });
+    });
+
+    app.get("/services/surveys/draft", async (req, res) => {
+        console.log("get surveys draft from server")
+        const surveys = await SurveyDraft.find({ owner: req.user._id }).sort({ _id: -1 });
+        return res.json(surveys);
     })
 }

@@ -1,14 +1,46 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { getSurveysDraft } from "../../actions/surveys";
+import ModalChooseSurveys from '../modal/ModalChooseSurveys';
 
 class MenuSurveys extends React.Component {
+    state = {
+        loadingSurveys: "",
+        openModal: false
+    }
+    
+    async componentDidMount() {
+    }
 
     saveSurvey = () => {
         this.props.saveSurvey();
     }
 
+    loadSurveys = async () => {
+        this.setState({ loadingSurveys: "menu-surveys__item--loading" });
+
+        if(!this.props.surveysDraft.length) {
+            await this.props.getSurveysDraft();
+        }
+
+        setTimeout(() => {
+            this.setState({ loadingSurveys: "", openModal: true });
+        }, 1000)
+        
+    }
+
     render() {
+        const { loadingSurveys, openModal } = this.state;
         return (
             <div id="menu-surveys">
+                {
+                    openModal &&
+                    <ModalChooseSurveys
+                        closeModal={ () => this.setState({ openModal: false }) }
+                        surveys={this.props.surveysDraft}
+                        loadSurveyDraft={this.props.loadSurveyDraft}
+                    />
+                }
                 <div className="menu-surveys__items">
                     <div
                         className="menu-surveys__item"
@@ -17,7 +49,10 @@ class MenuSurveys extends React.Component {
                         <i className="ti-save"></i>
                         <span> Save survey</span>
                     </div>
-                    <div className="menu-surveys__item">
+                    <div
+                        className={`menu-surveys__item ${loadingSurveys}`}
+                        onClick={this.loadSurveys}
+                    >
                         <i className="ti-reload"></i>
                         <span> Load survey</span>
                     </div>
@@ -26,26 +61,16 @@ class MenuSurveys extends React.Component {
                         <span> My surveys</span>
                     </div>
                 </div>
-
-                <div className="surveys-history">
-                    <ul className="surveys-history__items">
-                        <li className="surveys-history__item">
-                            Template 1
-                        </li>
-                        <li className="surveys-history__item">
-                            Template 2
-                        </li>
-                        <li className="surveys-history__item">
-                            Template 3
-                        </li>
-                        <li className="surveys-history__item">
-                            Template 4
-                        </li>
-                    </ul>
-                </div>
             </div>
         )
     }
 }
 
-export default MenuSurveys;
+const mapStateToProps = state => {
+    return { surveysDraft: state.surveysDraft }
+}
+
+export default connect(
+    mapStateToProps,
+    { getSurveysDraft }
+)(MenuSurveys);
