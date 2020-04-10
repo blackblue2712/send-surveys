@@ -5,12 +5,14 @@ const SurveyDraft = require("../models/surveys-draft.model");
 const _ = require("lodash");
 const { URL } = require("url");
 const { Path } = require("path-parser");
+const slack = require("../services/slack");
 
 
 module.exports = app => {
     app.get("/services/surveys", (req, res) => {
-        console.log("req.user", req.user);
-        return res.json(req.user);
+        console.log("send")
+        slack.sendNotify({ email: "danghuunghia2712@gmail.com", surveyId: 1, choice: "yes" });
+        res.end();
     });
 
     app.post("/services/surveys", async (req, res) => {
@@ -38,7 +40,7 @@ module.exports = app => {
                 const match = p.test(pathname);
                 if(match) {
                     return { email, ...match }
-                }    
+                }
             })
             .compact()
             .uniqBy("email", "surveyId")
@@ -59,6 +61,9 @@ module.exports = app => {
                         lastUpdate: Date.now()
                     }
                 )
+                if(response.nModified !== 0) {
+                    slack.sendNotify({ email, surveyId, choice });
+                }
                 console.log(response);
             })
             .value()

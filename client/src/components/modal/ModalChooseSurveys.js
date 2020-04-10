@@ -37,9 +37,8 @@ class ModalChooseSurveys extends React.Component {
             <>
                 <div className="modal-list-surveys">
                     <ul className="modal-list-surveys__items">
-                        {
-                            surveys.length 
-                            ? this.props.surveys.map(survey => {
+                        { 
+                            surveys.map(survey => {
                                 return (
                                     <li
                                         key={survey._id}
@@ -54,11 +53,11 @@ class ModalChooseSurveys extends React.Component {
                                     </li>
                                 )
                             })
-                            : <div style={{textAlign: "center", fontWeight: "bold"}}>
-                                You don't have any survey backup
-                             </div>
                         }
                     </ul>
+                    <div style={{textAlign: "center", fontWeight: "bold"}}>
+                        You don't have any survey backup
+                    </div>
                 </div>
             </>
         )

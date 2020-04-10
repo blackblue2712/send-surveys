@@ -8,7 +8,9 @@ module.exports = {
     stripePublicKey: "pk_test_osIZPWCrMZ6RMNWnAifUE7rH00JYSP6Cqp",
     stripeSecretKey: "sk_test_pXw6r6l11kTklC0CKwTyet9800h57khFLJ",
     sendGridKey: "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",
-    redirectDomain: "http://localhost:3000"
+    redirectDomain: "http://localhost:3000",
+    SLACK_INCOMMING_REQUEST_WEBHOOK: "https://hooks.slack.com/services/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"
+
 }
 
 
