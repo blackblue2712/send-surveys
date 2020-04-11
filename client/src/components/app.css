@@ -121,6 +121,10 @@ header {
     vertical-align: middle;
 }
 
+.main-nav__item--logo {
+    max-width: 200px;
+}
+
 .dropdown .dropdown-list {
     position: absolute;
     min-width: 14rem;
@@ -184,13 +188,14 @@ header {
 
 /* MAIN */
 main {
-    margin: 3rem 3rem 0 3rem;
+    margin: 5rem 3rem 0 3rem;
 }
 
 section {
     padding-bottom: 5rem;
 }
-section h1 {
+#introduce h1,
+#features h1 {
     display: inline-block;
     border: 3px solid #0099F9;
     padding: .4rem 1rem;

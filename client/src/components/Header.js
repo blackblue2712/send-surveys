@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import Logo from '../images/logo.png';
+import Logo from '../images/logo-0.png';
 import { connect } from 'react-redux';
 import { fetchUser, logout } from '../actions';
 import ModalLogin from './modal/ModalLogin';
@@ -95,7 +95,7 @@ class Header extends React.Component {
                         <li className="dropdown-list__item">
                             <i className="ti-user"></i> &nbsp;Your Profile
                         </li>
-                        <li className="dropdown-list__item">
+                        <li onClick={() => this.props.history.push("/services/surveys")} className="dropdown-list__item">
                             <i className="ti-arrow-circle-right"></i> &nbsp;Your Surveys
                         </li>
                         <li className="dropdown-list__item dropdown-list__item--hr">

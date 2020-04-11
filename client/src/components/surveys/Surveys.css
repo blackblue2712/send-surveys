@@ -1,6 +1,6 @@
 
 
-#features-surveys {
+.features-surveys {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -8,29 +8,29 @@
     margin: 0 auto;
     min-height: 605px;
     position: relative;
-    /* box-shadow: 0px 0px 1px rgba(34, 34, 34, .4); */
 }
 
-#features-surveys .surveys__header {
+.features-surveys .surveys__header {
     font-size: 2.6rem;
     color: #0099F9;
 }
-#features-surveys .surveys__header h1 {
-    margin: 1rem auto 3rem auto;
+.features-surveys .surveys__header h1 {
+    margin: 3rem auto;
 }
 
-#features-surveys .surveys__image {
+.features-surveys .surveys__image {
     width: 100%;
 }
-#features-surveys .surveys__image img{
+.features-surveys .surveys__image img{
     width: 100%;
+    max-width: 950px;
 }
 
 .btn__create-survey {
     margin: 1rem auto;
     position: relative;
-    min-width: 7rem;
-    min-height: 2rem;
+    min-width: 10rem;
+    min-height: 3rem;
 }
 
 .btn__create-survey::before {
@@ -40,7 +40,8 @@
     left: 50%;
     transform: translate(-50%, -30%);
     animation: changeText 6s linear infinite;
-    min-width: 6rem;
+    min-width: 10rem;
+    font-size: 1.3rem;
 }
 .surveys__body{
 }

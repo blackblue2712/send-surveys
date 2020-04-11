@@ -75,7 +75,7 @@ class ModalLarge extends React.Component {
     }
 
     render() {
-        const  { options, series, title, subject, body, lastUpdate, _id } = this.state;
+        const  { options, series, title, subject, body, lastUpdate, created, _id } = this.state;
         return ReactDOM.createPortal(
             <div
                 ref={this.containerModal} className="modal-container"
@@ -97,7 +97,7 @@ class ModalLarge extends React.Component {
                                     {new Date(created).toLocaleString()}
                                 </div> */}
                                 <div className="date__last-update">
-                                    {new Date(lastUpdate).toLocaleString()}
+                                    {new Date(lastUpdate || created).toLocaleString()}
                                 </div>
                             </div>
                         </div>

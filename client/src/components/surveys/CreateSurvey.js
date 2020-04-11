@@ -129,7 +129,7 @@ class CreateSurvey extends React.Component {
         const recipients = this.recipients;
         return (
             <main>
-                <section id="features-surveys">
+                <section className="features-surveys">
                     {
                         notify &&
                         <Notify

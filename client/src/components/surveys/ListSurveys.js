@@ -34,7 +34,7 @@ class ListSurveys extends React.Component {
                     openModal &&
                     <ModalLarge currentSurvey={currentSurvey} closeModal={() => this.setState({ openModal: false })}/>
                 }
-                <section id="features-surveys">
+                <section className="features-surveys">
                     <div className="surveys__header">
                         <h1>List Surveys</h1>
                     </div>
