@@ -7,14 +7,6 @@ class ModalSaveSurvey extends React.Component {
         this.nameInput = React.createRef();
     }
 
-    handleLoginFacebook = () => {
-        window.location = (`${process.env.REACT_APP_API_URL}/auth/facebook`);
-    }
-
-    handleLoginGoogle = () => {
-        window.location = (`${process.env.REACT_APP_API_URL}/auth/google`);
-    }
-
     renderTitleHeader = () => {
         return (
             <>

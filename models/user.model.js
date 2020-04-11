@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { ObjectId } = mongoose.Types;
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -8,6 +7,7 @@ const userSchema = new Schema({
     givenName: String,
     familyName: String,
     photo: String,
+    slackIncommingWebhookUrl: String
 });
 
 const userModel = mongoose.model("user", userSchema);

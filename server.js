@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const cors = require("cors");
+const path = require("path");
+const compression = require("compression");
 
 const keys = require("./config/keys");
 
@@ -21,6 +23,8 @@ mongoose.connection.on("error", (error) => {
 });
 
 // MIDDLEWARES
+app.use(compression());
+app.use(express.static("client/build"));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieSession({
@@ -33,6 +37,14 @@ app.use(passport.session());
 // ROUTES
 require("./routes/auth.route")(app);
 require("./routes/surveys.route")(app);
+require("./routes/notify.route")(app);
+
+// PRODUCTION
+if(process.env.NODE_ENV === "production") {
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve("client", "build", "index.html"));
+    })
+};
 
 // PORT
 const PORT = process.env.PORT || 5000;

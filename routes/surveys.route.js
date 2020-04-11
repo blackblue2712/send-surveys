@@ -2,6 +2,7 @@ const Mailer = require("../services/Mailer");
 const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 const Survey = require("../models/surveys.model");
 const SurveyDraft = require("../models/surveys-draft.model");
+const User = require("../models/user.model");
 const _ = require("lodash");
 const { URL } = require("url");
 const { Path } = require("path-parser");
@@ -35,7 +36,7 @@ module.exports = app => {
     });
 
     app.post("/services/surveys/webhook", async (req, res) => {
-        const p = new Path("/services/surveys/:surveyId/:choice");
+        const p = new Path("/services/surveys/:surveyId/:choice/:senderId");
         const events = _.chain(req.body)
             .map(({ email, url }) => {
                 const pathname = new URL(url).pathname;
@@ -46,7 +47,7 @@ module.exports = app => {
             })
             .compact()
             .uniqBy("email", "surveyId")
-            .each( async ({ email, surveyId, choice }) => {
+            .each( async ({ email, surveyId, choice, senderId }) => {
                 const response = await Survey.updateOne(
                     {
                         _id: surveyId,
@@ -63,9 +64,11 @@ module.exports = app => {
                         lastUpdate: Date.now()
                     }
                 )
+
                 console.log(response)
                 if(response.nModified !== 0) {
-                    slack.sendNotify({ email, surveyId, choice });
+                    const data = await User.findById({ _id: senderId }, "slackIncommingWebhookUrl");
+                    data && slack.sendNotify({ email, surveyId, choice }, data.slackIncommingWebhookUrl);
                 }
             })
             .value()

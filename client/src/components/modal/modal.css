@@ -143,6 +143,25 @@
 }
 .modal-large .modal-large-header__title .date {
     font-weight: bold;
+    text-align: right;
+}
+
+.modal-list-surveys {
+    width: 100%;
+}
+
+.modal-close {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    z-index: 10005;
+    cursor: pointer;
+}
+.modal-close i {
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 3rem;
 }
 
 @keyframes openModal {

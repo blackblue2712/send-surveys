@@ -98,7 +98,8 @@ header {
 #main-header .main-nav__item a:hover::before {
     width: calc(100% - 1.6rem);
 }
-#main-header .main-nav__item:first-child {
+#main-header .main-nav__item:first-child,
+#main-header .main-nav__item:nth-child(2){
     margin-right: auto
 }
 
@@ -123,6 +124,49 @@ header {
 
 .main-nav__item--logo {
     max-width: 200px;
+}
+
+.mobile-nav__items {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 65vw;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+    box-sizing: content-box;
+    /* display: none; */
+}
+
+.mobile-nav__item {
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #aeb2b7;
+    font-size: 1.5rem;
+    width: 70%;
+    text-align: center;
+    cursor: pointer;
+}
+.mobile-nav__item:first-child {
+    border: 3px solid #2FFFAD;
+    border-bottom-width: 0;
+    border-right-width: 0;
+}
+.mobile-nav__item:last-child {
+    border: 3px solid #2FFFAD;
+    border-top-width: 0;
+    border-left-width: 0;
+}
+.mobile-nav__item:hover {
+    color: #fff;
+}
+.main-nav__item--mobile:first-child {
+    display: none;
 }
 
 .dropdown .dropdown-list {

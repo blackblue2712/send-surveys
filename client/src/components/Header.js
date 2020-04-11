@@ -4,13 +4,17 @@ import Logo from '../images/logo-0.png';
 import { connect } from 'react-redux';
 import { fetchUser, logout } from '../actions';
 import ModalLogin from './modal/ModalLogin';
+import ModalMobile from './modal/ModalMobile';
+import ModalNotificationSetup from './modal/ModalNotificationSetup';
 
 class Header extends React.Component {
     constructor() {
         super();
         this.state = {
             openModal: false,
-            openDropdown: false
+            openDropdown: false,
+            openModalMobile: false,
+            openModalNotificationSetup: false
         }
 
         this.dropDownEl = React.createRef();
@@ -92,12 +96,17 @@ class Header extends React.Component {
                     <div className="dropdow-list__backdrop"></div>
                     <span className="dropdown-list__arrow"></span>
                     <ul className="dropdown-list__items">
-                        <li className="dropdown-list__item">
-                            <i className="ti-user"></i> &nbsp;Your Profile
+                        <li
+                            className="dropdown-list__item"
+                            onClick={() => this.setState({ openModalNotificationSetup: true })}
+                        >
+                            {/* <i className="ti-user"></i> &nbsp;Your Profile */}
+                            <i className="ti-time"></i> &nbsp;Notification setup
                         </li>
                         <li onClick={() => this.props.history.push("/services/surveys")} className="dropdown-list__item">
                             <i className="ti-arrow-circle-right"></i> &nbsp;Your Surveys
                         </li>
+
                         <li className="dropdown-list__item dropdown-list__item--hr">
                             
                         </li>
@@ -115,13 +124,21 @@ class Header extends React.Component {
 
     render() {
         // console.log(this.props.auth)
-        const { openModal } = this.state;
+        const { openModal, openModalMobile, openModalNotificationSetup } = this.state;
         return (
             <header>
                 {openModal && <ModalLogin closeModal={() => this.setState({ openModal: false })} />}
                 <div id="main-header">
                     <div className="main-nav">
                         <ul className="main-nav__items">
+                            <li className="main-nav__item main-nav__item--mobile">
+                                <button
+                                    className="btn btn-outline"
+                                    onClick={() => this.setState({ openModalMobile: true })}
+                                >
+                                    <i style={{fontSize: "1.5rem"}} className="ti-align-left"></i>
+                                </button>
+                            </li>
                             <li className="main-nav__item">
                                 <Link to="/"><img src={Logo} alt="logo" className="main-nav__item--logo" /></Link>
                             </li>
@@ -134,10 +151,22 @@ class Header extends React.Component {
                             <li className="main-nav__item">
                                 <a href="#Contact">Contact</a>
                             </li>
-                            <li className="main-nav__item">
+                            <li className="main-nav__item main-nav__item--mobile">
                                 {this.renderButtonAuth()}
                             </li>
                         </ul>
+
+                        {
+                            openModalMobile && 
+                            <ModalMobile closeModal={() => this.setState({ openModalMobile: false })} />
+                        }
+                        {
+                            openModalNotificationSetup && 
+                            <ModalNotificationSetup
+                                closeModal={() => this.setState({ openModalNotificationSetup: false })}
+                            />
+                        }
+
                     </div>
                 </div>
             </header>

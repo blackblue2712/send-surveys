@@ -82,6 +82,9 @@ class ModalLarge extends React.Component {
                 onClick={this.handleCloseModal}
             >
                 <Loading />
+                <div onClick={this.handleCloseModal} className="modal-close">
+                    <i className="ti-angle-double-left"></i>
+                </div>
                 <div
                     className="modal-large"
                     onClick={e => e.stopPropagation()}

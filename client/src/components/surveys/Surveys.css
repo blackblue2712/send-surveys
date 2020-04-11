@@ -104,6 +104,7 @@
     font-weight: bold;
     color: #f04747;
     border-bottom: 1px solid #f04747;
+    background: antiquewhite;
 }
 .surveys__body-validate .content:before {
     content: "";
@@ -227,10 +228,12 @@
 }
 .modal-list-surveys__item i {
     position: absolute;
-    right: 5px;
-    top: 5px;
     border-radius: 50%;
     font-size: .75rem;
+    padding: .2rem;
+    background: #333;
+    top: 0;
+    right: 0
 }
 .modal-list-surveys__item i:hover {
     color: red;

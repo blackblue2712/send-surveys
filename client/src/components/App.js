@@ -12,6 +12,7 @@ import ListSurveys from './surveys/ListSurveys';
 
 
 import "./app.css";
+import "./responsive.css";
 
 class App extends React.Component {
 

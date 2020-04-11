@@ -42,7 +42,7 @@ class Main extends React.Component {
                         <p className="introduce__description">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, necessitatibus?
                         </p>
-                        <button className="btn btn-primary btn-large">
+                        <button onClick={() => {window.open("https://api.slack.com/messaging/webhooks", "__blank")}} className="btn btn-primary btn-large">
                             How to turn on notify
                         </button>
                     </div>
@@ -57,7 +57,6 @@ class Main extends React.Component {
                     <h3>Fast - Trustly - Free!</h3>
                     <p className="stack__description">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                          Quos quisquam rem perferendis fugit vitae fugiat illum cumque explicabo deserunt dolorum.
-                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod, harum?
                     </p>
                     <div className="stack-images">
                         <img src={Reactjs} alt="reactjs"/>
