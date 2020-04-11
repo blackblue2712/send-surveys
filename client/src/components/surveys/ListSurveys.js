@@ -60,6 +60,9 @@ class ListSurveys extends React.Component {
                                 })
                             }
                         </ul>
+                        {
+                            !surveys.length && <div>You don't have any survey</div>
+                        }
                     </div>
                     <div className="surveys__image">
 

@@ -54,7 +54,7 @@ class RecipientsInput extends React.Component {
         const { tags } = this.state;
         return (
             <>
-                <label htmlFor="title">Recipients ({tags.length})</label>
+                <label htmlFor="title">Recipients ({tags.length}) - <small>Hit enter or white space to add recipient</small></label>
                 <input
                     name="recipients" id="recipients" type="email"
                     onKeyDown={e => this.handleChange(e)}

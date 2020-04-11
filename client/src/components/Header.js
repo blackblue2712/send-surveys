@@ -48,6 +48,7 @@ class Header extends React.Component {
 
     logout = () => {
         this.props.logout();
+        this.props.history.push("/")
     }
 
     openModalLogin = () => {

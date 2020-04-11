@@ -78,11 +78,10 @@ class CreateSurvey extends React.Component {
                 loading: "", title: "", notify: { content: response.payload.message, stats: response.payload.status }
             });
 
-            console.log(response)
 
             setTimeout(() => {
                 this.setState({ notify: false })
-            }, 2000)
+            }, 4500)
         }
     }
 
@@ -103,6 +102,10 @@ class CreateSurvey extends React.Component {
             openModal: false, loading: "",
             notify: { content: response.payload.message, stats: response.payload.status }
         });
+
+        setTimeout(() => {
+            this.setState({ notify: false })
+        }, 4500)
     }
 
     loadSurveyDraft = sid => {

@@ -187,7 +187,18 @@ main {
     margin: 3rem 3rem 0 3rem;
 }
 
-#introduce {
+section {
+    padding-bottom: 5rem;
+}
+section h1 {
+    display: inline-block;
+    border: 3px solid #0099F9;
+    padding: .4rem 1rem;
+    border-top-width: 0;
+    border-right-width: 0;
+}
+
+#introduce, #features {
     display: flex;
     align-items: center;
 }
@@ -196,7 +207,8 @@ main {
     width: 55%;
     margin-right: 5%;
 }
-.introduce-left img {
+.introduce-left img,
+.introduce-right img {
     width: 100%;
     min-width: 330px;
 }
@@ -211,9 +223,45 @@ main {
     color: #0099F9;
 }
 
-.introduce__description {
+.introduce__description,
+.stack__description {
     color: #3d485f;
+}
 
+#features .introduce-left {
+    width: 45%;
+}
+#features .introduce-right {
+    width: 55%;
+}
+
+#stack {
+    text-align: center;    
+}
+#stack h3 {
+    margin-top: 0;
+}
+#stack h1  {
+    text-align: center;
+    font-size: 3.2rem;
+    font-weight: bold;
+    color: #0099F9;
+    margin-bottom: .5rem;
+    border: none;
+}
+#stack p  {
+    max-width: 80%;
+    margin: 1rem auto;
+}
+#stack .stack-images  {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#stack .stack-images img {
+    max-width: 20%;
+    max-height: 7rem;
 }
 
 

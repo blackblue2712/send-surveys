@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getSurveysDraft } from "../../actions/surveys";
+import { Link } from 'react-router-dom';
 import ModalChooseSurveys from '../modal/ModalChooseSurveys';
 
 class MenuSurveys extends React.Component {
@@ -52,10 +53,10 @@ class MenuSurveys extends React.Component {
                         <i className="ti-reload"></i>
                         <span> Load survey</span>
                     </div>
-                    <div className="menu-surveys__item">
+                    <Link to="/services/surveys" className="menu-surveys__item">
                         <i className="ti-layout-grid2"></i> 
                         <span> My surveys</span>
-                    </div>
+                    </Link>
                 </div>
             </div>
         )

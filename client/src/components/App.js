@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -21,14 +22,15 @@ class App extends React.Component {
                     <Switch>
                         <Route exact path="/" component={Main} />
                         <Route exact path="/services" component={Surveys} />
-                        <Route exact path="/services/create/:uid" component={CreateSurvey} />
 
-                        <Route exact path="/services/surveys/:uid" component={ListSurveys} />
+                        <Route exact path="/services/create/:uid" component={CreateSurvey} />
+                        <PrivateRoute exact path="/services/surveys" component={ListSurveys} />
                     </Switch>
                 <Footer />
             </Router>
         );
     }
 }
+
 
 export default App;
