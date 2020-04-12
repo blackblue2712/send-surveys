@@ -30,7 +30,7 @@ class Header extends React.Component {
             try {
                 document.getElementById(whereami).classList.add("youarehere");
             } catch(err) {
-                console.log("route not defined")
+                console.log("tab not defined")
             }
         }
 
@@ -45,7 +45,7 @@ class Header extends React.Component {
             try {
                 document.getElementById(whereami).classList.add("youarehere");
             } catch(err) {
-                console.log("route not defined")
+                console.log("tab not defined")
             }
         }
     }

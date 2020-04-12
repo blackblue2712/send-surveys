@@ -5,8 +5,6 @@ module.exports = {
     facebookAppSecret: process.env.FACEBOOK_APP_SECRET,
     mongoURI: process.env.MONGO_URI,
     cookieSecret: process.env.COOKIE_SCRET,
-    stripePublicKey: process.env.STRIPE_PUBLIC_KEY,
-    stripeSecretKey: process.env.STRIPE_SECRET_KEY,
     sendGridKey: process.env.SEND_GRID_KEY,
     redirectDomain: process.env.REDIRECT_DOMAIN,
     SLACK_INCOMMING_REQUEST_WEBHOOK: process.env.SLACK_INCOMMING_REQUEST_WEBHOOK

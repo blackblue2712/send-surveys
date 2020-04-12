@@ -9,6 +9,8 @@ import Main from './Main';
 import Surveys from './surveys/Surveys';
 import CreateSurvey from './surveys/CreateSurvey';
 import ListSurveys from './surveys/ListSurveys';
+import PageNotFound from './404';
+import Thanks from './Thanks';
 
 
 import "./app.css";
@@ -20,13 +22,16 @@ class App extends React.Component {
         return (
             <Router>
                 <Header />
-                    <Switch>
-                        <Route exact path="/" component={Main} />
-                        <Route exact path="/services" component={Surveys} />
+                <Switch>
+                    <Route exact path="/" component={Main} />
+                    <Route exact path="/services" component={Surveys} />
 
-                        <Route exact path="/services/create/:uid" component={CreateSurvey} />
-                        <PrivateRoute exact path="/services/surveys" component={ListSurveys} />
-                    </Switch>
+                    <Route exact path="/services/create/:uid" component={CreateSurvey} />
+                    <PrivateRoute exact path="/services/surveys" component={ListSurveys} />
+                    <Route exact path="/services/surveys/:sid/:choice/:owner" component={Thanks} />
+
+                    <Route component={PageNotFound} />
+                </Switch>
                 <Footer />
             </Router>
         );

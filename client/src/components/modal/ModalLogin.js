@@ -2,14 +2,14 @@ import React from 'react';
 import Modal from './Modal';
 
 class ModalLogin extends React.Component {
-
+    
 
     handleLoginFacebook = () => {
-        window.location = (`/auth/facebook`);
+        window.location = (`${process.env.REACT_APP_API_URL}/auth/facebook`);
     }
 
     handleLoginGoogle = () => {
-        window.location = (`/auth/google`);
+        window.location = (`${process.env.REACT_APP_API_URL}/auth/google`);
     }
 
     renderTitleHeader = () => {
