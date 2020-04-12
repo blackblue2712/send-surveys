@@ -232,7 +232,7 @@ header {
 
 /* MAIN */
 main {
-    margin: 3rem 3rem 0 3rem;
+    margin: 1rem 3rem 0 3rem;
 }
 
 section {
@@ -241,8 +241,8 @@ section {
 #introduce h1,
 #features h1 {
     display: inline-block;
-    border: 3px solid #0099F9;
-    padding: .4rem 1rem;
+    /* border: 3px solid #0099F9; */
+    /* padding: .4rem 1rem; */
     border-top-width: 0;
     border-right-width: 0;
 }
@@ -289,6 +289,7 @@ section {
 }
 #stack h3 {
     margin-top: 0;
+    color: #3d485f
 }
 #stack h1  {
     text-align: center;

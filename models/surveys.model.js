@@ -4,6 +4,10 @@ const ObjectId = Schema.Types.ObjectId;
 const Recipients = require("./recipients.model");
 
 const surveysSchema = new Schema({
+    name: {
+        type: String,
+        default: "[A - Draft]"
+    },
     owner: {
         type: ObjectId,
         ref: "user"

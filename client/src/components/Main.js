@@ -54,7 +54,7 @@ class Main extends React.Component {
 
                 <section id="stack" style={{marginBottom: "10rem"}}>
                     <h1 className="introduce__title">Why Me?</h1>
-                    <h3>Fast - Trustly - Free!</h3>
+                    <h3>Fast & Free</h3>
                     <p className="stack__description">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                          Quos quisquam rem perferendis fugit vitae fugiat illum cumque explicabo deserunt dolorum.
                     </p>

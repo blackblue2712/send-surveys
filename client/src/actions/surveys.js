@@ -12,7 +12,8 @@ export const getSurveys = () => async dispatch => {
 }
 
 export const sendSurvey = data => async dispatch => {
-    const response = await axios.post("/services/surveys", data);
+    const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+    const response = await axios.post("/services/surveys", data, config);
     console.log(response)
 
     if(!response.data.survey) {

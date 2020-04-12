@@ -1,19 +1,22 @@
 import React from 'react';
 import RecipinentsInput from './RecipientsInput';
 import InputFormControl from '../input/InputFormControl';
-import TextareaFormControl from '../input/TextareaFormControl';
+import InputFiles from '../input/InputFiles';
 import MenuSurveys from './MenuSurveys';
 import { sendSurvey, saveSurvey } from '../../actions/surveys';
 import { connect } from 'react-redux';
 import Notify from '../notify/Notify';
 import ModalSaveSurvey from '../modal/ModalSaveSurvey';
-// import Loading from '../loading/Loading';
+import MDE from '../editor/MDE';
 
 class CreateSurvey extends React.Component {
     constructor() {
         super();
 
         this.recipients = [];
+        this.files = [];
+        this.formData = new FormData();
+        this.ips = React.createRef();
         this.state = {
             title: "",
             subject: "",
@@ -66,18 +69,31 @@ class CreateSurvey extends React.Component {
         )
     }
 
+    getFile = callback => {
+        this.files = callback();
+    }
+
     sendSurvey = async () => {
-        
         await this.validateData();
         if (!this.state.errors.length) {
             const { title, body, subject } = this.state;
+            this.formData.delete("files[]");
+            this.formData.append("title", title);
+            this.formData.append("body", body);
+            this.formData.append("subject", subject);
+            this.formData.append("recipients", JSON.stringify(this.recipients));
+            if(this.files.length > 0) {
+                this.files.forEach(file => this.formData.append("files[]", file));
+            }
             this.setState({ loading: "open" });
-            const response = await this.props.sendSurvey({ title, body, subject, recipients: this.recipients });
+
+            console.log(this.formData.getAll("files[]"))
+
+            const response = await this.props.sendSurvey(this.formData);
 
             this.setState({
                 loading: "", title: "", notify: { content: response.payload.message, stats: response.payload.status }
             });
-
 
             setTimeout(() => {
                 this.setState({ notify: false })
@@ -95,7 +111,7 @@ class CreateSurvey extends React.Component {
 
     saveSurvey = async name => {
         this.setState({ loading: "open" });
-        const { title, body, subject } = this.state
+        const { title, body, subject } = this.state;
         const response = await this.props.saveSurvey({ title, body, subject, recipients: this.recipients, name: name || undefined });
 
         this.setState({
@@ -128,7 +144,7 @@ class CreateSurvey extends React.Component {
         const { title, subject, body, errors, loading, notify, openModal } = this.state;
         const recipients = this.recipients;
         return (
-            <main>
+            <main style={{marginTop: "0"}}>
                 <section className="features-surveys">
                     {
                         notify &&
@@ -151,13 +167,35 @@ class CreateSurvey extends React.Component {
                         loadSurveyDraft={this.loadSurveyDraft}
                     />
                     <div className="surveys__header">
-                        <h1>Send Surveys</h1>
+                        {/* <h1>Send Surveys</h1> */}
+                        <h3>Send Surveys</h3>
                     </div>
                     <div className="surveys__body">
                         <form onSubmit={ e => e.preventDefault() } className="surveys__body-form">
-                            <InputFormControl name={"title"} labelName={"title"} setValue={this.setValue} errors={errors} value={title} />
-                            <InputFormControl name={"subject"} labelName={"subject"} setValue={this.setValue} errors={errors} value={subject} />
-                            <TextareaFormControl name={"body"} labelName={"body"} setValue={this.setValue} errors={errors} value={body} />
+                            <InputFormControl
+                                name={"title"}
+                                labelName={"title"}
+                                setValue={this.setValue}
+                                errors={errors}
+                                value={title}
+                            />
+                            <InputFormControl
+                                name={"subject"}
+                                labelName={"subject"}
+                                setValue={this.setValue}
+                                errors={errors}
+                                value={subject}
+                            />
+
+                            <MDE
+                                setValue={this.setValue}
+                                value={body}
+                                name="body"
+                                labelName="body"
+                                errors={errors}
+                            />
+
+                            <InputFiles getFile={this.getFile} />
 
                             <div className="form-control">
                                 {errors.indexOf("recipients") !== -1 && this.renderError("recipients")}

@@ -156,6 +156,7 @@
     right: 0;
     z-index: 10005;
     cursor: pointer;
+    transform: translateY(-50%);
 }
 .modal-close i {
     color: #fff;
