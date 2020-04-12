@@ -11,7 +11,7 @@ import ListSurveys from './surveys/ListSurveys';
 import PageNotFound from './404';
 import Thanks from './Thanks';
 
-import Test from './Test';
+// import Test from './Test';
 
 import "./app.css";
 import "./responsive.css";
@@ -30,7 +30,7 @@ class App extends React.Component {
                     <PrivateRoute exact path="/services/surveys" component={ListSurveys} />
                     <Route exact path="/services/surveys/:sid/:choice/:owner" component={Thanks} />
 
-                    <Route exact path="/test" component={Test} />
+                    {/* <Route exact path="/test" component={Test} /> */}
 
                     <Route component={PageNotFound} />
                 </Switch>
