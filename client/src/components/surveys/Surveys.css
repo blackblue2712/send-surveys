@@ -85,11 +85,21 @@
     border-bottom-color: #3ca374;
 }
 /* .form-control */
+#isTracking {
+    border: 1px solid green;
+    width: 1rem;
+    height: 1rem;
+    background: transparent;
+    appearance: none;
+}
+#isTracking:checked {
+    background: #82cfff
+}
 #attchments {
     display: none;
 }
 .btn-attachments {
-    min-width: 10rem;
+    max-width: 15rem;
     min-height: 5rem;
     margin: .4rem 0  1rem 0 !important;
     opacity: .7;
@@ -97,6 +107,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    border: 1px solid #ccc;
 }
 .btn-attachments h4 {
     margin: 0;

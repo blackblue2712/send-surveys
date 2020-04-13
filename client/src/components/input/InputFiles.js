@@ -3,7 +3,7 @@ import Tag from '../tag/Tag';
 
 const InputFiles = props => {
 
-    let [files, setFiles] = useState([]);
+    let [files, setFiles] = useState(props.initFiles);
     let [filesData, setFilesData] = useState([]);
     let ips = useRef(null);
 
@@ -21,7 +21,7 @@ const InputFiles = props => {
             setFilesData( [...filesData, ...filesDataArr] );
             props.getFile(() => {
                 return [...filesData, ...filesDataArr];
-            })
+            });
         }
     }
 
@@ -39,10 +39,10 @@ const InputFiles = props => {
     return (
         <div className="form-control">
             <label htmlFor="attchments">Attachments ({files.length})</label>
-            <button onClick={() => ips.current.click()} className="btn-attachments">
+            <a href="#chooseFiles"onClick={() => {ips.current.click(); console.log(ips.current)}} className="btn-attachments">
                 <h4>Attach files here.</h4>
                 <i className="ti-files"></i>
-            </button>
+            </a>
             <input
                 ref={ips} type="file" multiple
                 accept="image/*, application/pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
