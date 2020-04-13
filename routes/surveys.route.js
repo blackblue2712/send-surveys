@@ -49,7 +49,7 @@ module.exports = app => {
     app.post("/services/surveys", requireAuth, async (req, res) => {
         let form = new formidable.IncomingForm({ multiples: true });
         form.parse(req, async (err, fields, files) => {
-            let { title, subject, body, recipients } = fields;
+            let { title, subject, body, recipients, isTrackingData } = fields;
             let attachBase64 = [];
             recipients = JSON.parse(recipients);
             
@@ -70,7 +70,7 @@ module.exports = app => {
             survey.owner = req.user._id;
             survey.recipients = recipients.map(recipient => ({email: recipient}) );
             
-            const mail = new Mailer(survey, surveyTemplate.defaultTemplate(survey), attachBase64);
+            const mail = new Mailer(survey, surveyTemplate.defaultTemplate(survey, isTrackingData), attachBase64);
             const response = await mail.send();
             console.log(response)
 

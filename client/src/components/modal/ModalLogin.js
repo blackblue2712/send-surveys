@@ -5,11 +5,13 @@ class ModalLogin extends React.Component {
     
 
     handleLoginFacebook = () => {
-        window.location = (`${process.env.REACT_APP_API_URL}/auth/facebook`);
+        const url = process.env.REACT_APP_API_URL || "";
+        window.location = (`${url}/auth/facebook`);
     }
 
     handleLoginGoogle = () => {
-        window.location = (`${process.env.REACT_APP_API_URL}/auth/google`);
+        const url = process.env.REACT_APP_API_URL || "";
+        window.location = (`${url}/auth/google`);
     }
 
     renderTitleHeader = () => {
