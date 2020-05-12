@@ -23,3 +23,7 @@ An app can makes survey, send to many recipients (text/ html/ attachments). Trac
 ### Tracking user's responses
 
 ![images](https://res.cloudinary.com/daerg3axr/image/upload/v1589277287/wi6ww66b8j4lggn5cbwo.png)
+
+### Save surveys, load draf, import email via excel easily
+
+![https://res.cloudinary.com/daerg3axr/image/upload/v1589277865/fwywp52hvxuweermze4r.gif](https://res.cloudinary.com/daerg3axr/image/upload/v1589277865/fwywp52hvxuweermze4r.gif)
