@@ -12,6 +12,11 @@ An app can makes survey, send to many recipients (text/ html/ attachments). Trac
     - cd -
     - npm run dev
 
+### deploy
+- heroku create
+- git push heroku master
+
+
 ### Slack auto send message when a user response your surveys
 
 ![images](https://res.cloudinary.com/daerg3axr/image/upload/v1589277191/n4gpwdtus6b3sdmgk3cm.png)
@@ -26,4 +31,6 @@ An app can makes survey, send to many recipients (text/ html/ attachments). Trac
 
 ### Save surveys, load draf, import email via excel easily
 
-![https://res.cloudinary.com/daerg3axr/image/upload/v1589277865/fwywp52hvxuweermze4r.gif](https://res.cloudinary.com/daerg3axr/image/upload/v1589277865/fwywp52hvxuweermze4r.gif)
+![images](https://res.cloudinary.com/daerg3axr/image/upload/v1589291275/hysair0apvgpnq7af7zk.gif)
+
+![images](https://res.cloudinary.com/daerg3axr/image/upload/v1589291286/lq0vl5mcbuxiputto6n2.gif)
