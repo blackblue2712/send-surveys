@@ -121,7 +121,7 @@
     z-index: 999;
     left: 0;
     visibility: hidden;
-    animation: loading 1s ease;
+    animation: loading 2s ease;
 }
 
 .loading-prepare__background {

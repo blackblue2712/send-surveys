@@ -109,7 +109,7 @@ class ModalLarge extends React.Component {
                     </div>
 
                     <div className="modal-large-body">
-                        <p>{body}</p>
+                        <div dangerouslySetInnerHTML={{__html: body}} />
 
                         <div id="chart">
                             <ReactApexChart options={options} series={series} type="pie" />

@@ -5,8 +5,9 @@ class ModalLogin extends React.Component {
     
 
     handleLoginFacebook = () => {
-        const url = process.env.REACT_APP_API_URL || "";
-        window.location = (`${url}/auth/facebook`);
+        alert('please login with google');
+        // const url = process.env.REACT_APP_API_URL || "";
+        // window.location = (`${url}/auth/facebook`);
     }
 
     handleLoginGoogle = () => {
@@ -17,7 +18,7 @@ class ModalLogin extends React.Component {
     renderTitleHeader = () => {
         return (
             <>
-                <h3>LOGIN YOUR ACCOUNT</h3>
+                <h3>LOGIN YOUR ACCOUNT (GOOGLE ONLY)</h3>
                 <p>
                     By creating an account, you can access to send surveys for free and tracking 
                     who has responsedin realtime notification on slack.

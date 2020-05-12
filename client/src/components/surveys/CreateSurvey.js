@@ -1,4 +1,5 @@
 import React from 'react';
+
 import RecipinentsInput from './RecipientsInput';
 import InputFormControl from '../input/InputFormControl';
 import InputFiles from '../input/InputFiles';
@@ -9,6 +10,8 @@ import { connect } from 'react-redux';
 import Notify from '../notify/Notify';
 import ModalSaveSurvey from '../modal/ModalSaveSurvey';
 import MDE from '../editor/MDE';
+
+import './Surveys.css';
 
 class CreateSurvey extends React.Component {
     constructor() {
@@ -251,18 +254,21 @@ class CreateSurvey extends React.Component {
                                 />
                             </div>
                         </form>
-                        <button
-                            className="btn btn-outline btn-green btn-bold"
-                            onClick={this.sendSurvey}
-                        >
-                            <i className="ti-location-arrow"></i> Send Now 
-                        </button>
-                        <button
-                            className="btn btn-outline btn-danger btn-bold"
-                            onClick={this.resetForm}
-                        >
-                            <i className="ti-reload"></i> Reset 
-                        </button>
+                        <div >
+                            <button
+                                className="btn btn-outline btn-green btn-bold"
+                                onClick={this.sendSurvey}
+                                style={{marginRight: "24px"}}
+                            >
+                                <i className="ti-location-arrow"></i> Send Now 
+                            </button>
+                            <button
+                                className="btn btn-outline btn-danger btn-bold"
+                                onClick={this.resetForm}
+                            >
+                                <i className="ti-reload"></i> Reset 
+                            </button>
+                        </div>
                         <div className="surveys__background">
                         </div>
                     </div>

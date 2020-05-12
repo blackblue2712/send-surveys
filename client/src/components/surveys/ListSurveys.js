@@ -10,13 +10,16 @@ class ListSurveys extends React.Component {
         super();
         this.state = {
             openModal: false,
-            currentSurvey: {}
+            currentSurvey: {},
+            loading: true
         }
     }
 
 
-
     async componentDidMount() {
+        setTimeout(() => {
+            this.setState({ loading: false });
+        }, 1000)
         await this.props.getSurveys();
     }
 
@@ -26,51 +29,54 @@ class ListSurveys extends React.Component {
 
     render() {
         const { surveys } = this.props;
-        const { openModal, currentSurvey } = this.state;
-        return (
-            <main className="">
-                <LoadingDuration />
-                {
-                    openModal &&
-                    <ModalLarge currentSurvey={currentSurvey} closeModal={() => this.setState({ openModal: false })}/>
-                }
-                <section className="features-surveys">
-                    <div className="surveys__header">
-                        <h1>List Surveys</h1>
-                    </div>
-                    <div className="surveys__body">
-                        <ul className="list-surveys__items">
+        const { openModal, currentSurvey, loading } = this.state;
+        if(loading) {
+            return <LoadingDuration />
+        } else {
+
+            return (
+                <main className="">
+                    
+                    {
+                        openModal &&
+                        <ModalLarge currentSurvey={currentSurvey} closeModal={() => this.setState({ openModal: false })}/>
+                    }
+                    <section className="features-surveys">
+                        <div className="surveys__header">
+                            <h1>List Surveys</h1>
+                        </div>
+                        <div className="surveys__body">
+                            <ul className="list-surveys__items">
+                                {
+                                    surveys.map(survey => {
+                                        return (
+                                            <li
+                                                key={survey._id}
+                                                className="list-surveys__item"
+                                                onClick={e => {
+                                                    this.loadSurvey(survey);
+                                                }}
+                                                draggable={true}
+                                            >
+                                                <h4>{survey.title}</h4>
+                                                <small>{moment(survey.created).fromNow()}</small>
+                                            </li>
+                                        )
+                                    })
+                                }
+                            </ul>
                             {
-                                surveys.map(survey => {
-                                    return (
-                                        <li
-                                            key={survey._id}
-                                            className="list-surveys__item"
-                                            onClick={e => {
-                                                this.loadSurvey(survey);
-                                            }}
-                                            draggable={true}
-                                        >
-                                            {/* <i onClick={() => this.handleRemoveDraft(survey._id)} className="ti-close"></i> */}
-                                            {/* <img loading={lazy} src={`https://robohash.org/${surveys._id}`} alt="surveys" /> */}
-                                            <h4>{survey.title}</h4>
-                                            <small>{moment(survey.created).fromNow()}</small>
-                                        </li>
-                                    )
-                                })
+                                !surveys.length && <div>You don't have any survey</div>
                             }
-                        </ul>
-                        {
-                            !surveys.length && <div>You don't have any survey</div>
-                        }
-                    </div>
-                    <div className="surveys__image">
-
-                    </div>
-
-                </section>
-            </main>
-        )
+                        </div>
+                        <div className="surveys__image">
+    
+                        </div>
+    
+                    </section>
+                </main>
+            )
+        }
     }
 }
 

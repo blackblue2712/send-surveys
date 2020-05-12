@@ -5,7 +5,9 @@ import PrivateRoute from './PrivateRoute';
 import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
-import Surveys from './surveys/Surveys';
+// import Surveys from './surveys/Surveys';
+
+import Services from './services/Services';
 import CreateSurvey from './surveys/CreateSurvey';
 import ListSurveys from './surveys/ListSurveys';
 import PageNotFound from './404';
@@ -23,8 +25,8 @@ class App extends React.Component {
             <Router>
                 <Header />
                 <Switch>
-                    <Route exact path="/" component={Main} />
-                    <Route exact path="/services" component={Surveys} />
+                    <Route exact path="/" component={Services} />
+                    <Route exact path="/services" component={Services} />
 
                     <Route exact path="/services/create/:uid" component={CreateSurvey} />
                     <PrivateRoute exact path="/services/surveys" component={ListSurveys} />

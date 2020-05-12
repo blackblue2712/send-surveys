@@ -1,0 +1,150 @@
+#services-section {
+    margin-top: 16px;
+    /* padding-bottom: 100px; */
+}
+
+.section-header {
+    text-align: center;
+}
+
+.section-body {
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.bg-linear-top {
+    transform: rotate(-6deg);
+    background-color: #f4f4f4;
+    height: 100%;
+    width: 120%;
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: 20px
+}
+
+.bg-linear-bot{
+    background: #303D46;
+    height: 100%;
+    width: 120%;
+    position: absolute;
+    z-index: -1;
+    transform: rotate(5deg);
+    top: 100px;
+    left: -10%;
+    /* height: 100vh; */
+}
+
+.container {
+    /* position: absolute;
+    width: 100%; */
+}
+
+.section-body .info {
+    
+}
+.section-body .info .img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 50%;
+    border: 4px solid #303D46;
+    transition: .4s;
+    margin: 0 auto;
+}
+.section-body .info .img:hover {
+    border-color: #1DBFAF;
+}
+
+.section-body .info img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.section-body .status {
+    display: flex;
+    justify-content: center;
+    margin-left: -16px;
+    margin-top: 20px;
+}
+.section-body .status .left {
+    padding-right: 16px;
+    border-right: 1px solid #ccc;
+}
+.section-body .status .right {
+    padding-left: 16px;
+}
+
+.section-body .status p {
+
+}
+.section-body .status span {
+    font-weight: bold;
+}
+
+
+.inner {
+
+}
+
+.section-start {
+    padding-top: 40px;
+}
+
+.introduce-services {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    padding: 16px;
+    background: #3C4D58;
+    width: fit-content;
+    position: relative;
+    border-radius: 8px;
+    color: #fff;
+    margin-bottom: 50px;
+    max-width: 800px;
+    width: 100%;
+}
+.introduce-services > div {
+    /* display: flex; */
+}
+.introduce-services > div img {
+    width: 79px;
+    position: absolute;
+    top: calc(50% - 60px);
+}
+.introduce-services > div p {
+    margin: 0 auto 0 100px;
+}
+.introduce-services .btn {
+    display: inline-block;
+    margin-left: auto;
+}
+.introduce-services > div p h3 {
+    margin: 0;
+}
+
+.bg-footer {
+    background: url(../../images/footer-line.png) center center no-repeat;
+    width: 100%;
+    height: 72px;
+    z-index: 1;
+}
+
+@media (max-width: 660px) {
+    .introduce-services {
+        display: block;
+    }
+
+    .introduce-services .btn {
+        display: block;
+        margin: 0 auto;
+        margin-top: 26px;
+        width: fit-content;
+    }
+    /* .introduce-services > div span {
+        display: none;
+    } */
+}
