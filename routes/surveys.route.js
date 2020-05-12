@@ -41,7 +41,7 @@ module.exports = app => {
         res.send({})
     })
 
-    app.get("/services/surveys", requireAuth, async (req, res) => {
+    app.get("/api/services/surveys", requireAuth, async (req, res) => {
         const surveys = await Survey.find({ owner: req.user._id }).sort({ _id: -1 });
         res.json(surveys);
     });

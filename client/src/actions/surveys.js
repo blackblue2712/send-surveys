@@ -2,7 +2,7 @@ import axios from 'axios';
 import types from '../types.json';
 
 export const getSurveys = () => async dispatch => {
-    const response = await axios.get("/services/surveys");
+    const response = await axios.get("/api/services/surveys");
     console.log(response);
 
     return dispatch({
