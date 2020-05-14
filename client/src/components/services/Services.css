@@ -47,12 +47,14 @@
     
 }
 .section-body .info .img {
-    max-width: 200px;
-    max-height: 200px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     border: 4px solid #303D46;
     transition: .4s;
     margin: 0 auto;
+    overflow: hidden;
+    background: #ebebeb69;
 }
 .section-body .info .img:hover {
     border-color: #1DBFAF;

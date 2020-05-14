@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import './Services.css';
-import AVT from '../../images/ps.jpg';
+import AVT from '../../images/letter.png';
 import Rocket from '../../images/rocket.png';
 import Slack from '../../images/slack-animate.gif';
 import PushNotify from '../../images/push_notification.gif';
@@ -47,7 +47,9 @@ class Services extends React.Component {
                     <div className="container">
                         <div className="info">
                             <div className="img">
-                                <img src={AVT} alt="avt" />
+                                {
+                                    auth ? <img src={this.props.auth.photo} alt="avt" /> : <img src={AVT} alt="avt" />
+                                }
                             </div>
                             <div className="status">
                                 <div className="left">
@@ -115,7 +117,6 @@ class Services extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return { auth: state.auth };
 }
 
