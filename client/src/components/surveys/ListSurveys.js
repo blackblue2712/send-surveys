@@ -66,7 +66,12 @@ class ListSurveys extends React.Component {
                                 }
                             </ul>
                             {
-                                !surveys.length && <div>You don't have any survey</div>
+                                !surveys.length && (
+                                    <>
+                                        <div>You don't have any survey</div>
+                                        <button style={{borderRadius: "40px"}} className="btn btn-outline btn-green btn-bold btn__create-survey" onClick={() => this.props.history.push(`/services/create/${this.props.auth._id}`)} ></button>
+                                    </>
+                                )
                             }
                         </div>
                         <div className="surveys__image">
@@ -81,7 +86,7 @@ class ListSurveys extends React.Component {
 }
 
 const mapPropsToState = state => {
-    return { surveys: state.surveys };
+    return { surveys: state.surveys, auth: state.auth };
 }
 
 export default connect(
